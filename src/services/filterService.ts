@@ -1,18 +1,16 @@
 // src/services/filterService.ts
 import { db } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { Task } from "../types/task";
-import { Member } from "../types/member";
+import { Member } from "../types/member"; // Import the Member type
 
- {Promise<string[]>} 
- 
+// Fetch all unique categories from the "tasks" collection
 export const getCategories = async (): Promise<string[]> => {
   try {
     const querySnapshot = await getDocs(collection(db, "tasks"));
     const categories = Array.from(
       new Set(querySnapshot.docs.map((doc) => doc.data().category))
     );
-    console.log("Fetched categories:", categories); 
+    console.log("Fetched categories:", categories);
     return categories;
   } catch (error) {
     console.error("Error fetching categories: ", error);
@@ -20,8 +18,7 @@ export const getCategories = async (): Promise<string[]> => {
   }
 };
 
- {Promise<Member[]>} 
- 
+// Fetch all members from the "members" collection
 export const getMembers = async (): Promise<Member[]> => {
   try {
     const querySnapshot = await getDocs(collection(db, "members"));
@@ -30,7 +27,7 @@ export const getMembers = async (): Promise<Member[]> => {
       name: doc.data().name,
       role: doc.data().role,
     }));
-    console.log("Fetched members:", members); 
+    console.log("Fetched members:", members);
     return members;
   } catch (error) {
     console.error("Error fetching members: ", error);
