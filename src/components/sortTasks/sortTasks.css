@@ -1,0 +1,15 @@
+.sort-tasks {
+    margin-bottom: 20px;
+  }
+  
+  .sort-tasks label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .sort-tasks select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
